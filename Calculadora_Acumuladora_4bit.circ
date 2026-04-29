@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+  This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+  
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <main name="Calculadora_Top"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="4" map="Button2" name="Menu Tool"/>
+    <tool lib="4" map="Button3" name="Menu Tool"/>
+    <tool lib="4" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="0" name="Poke Tool"/>
+    <tool lib="0" name="Edit Tool"/>
+    <tool lib="0" name="Text Tool"/>
+    <sep/>
+    <tool lib="0" name="Pin">
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </tool>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+    <tool lib="1" name="XOR Gate"/>
+  </toolbar>
+
+  <!-- ============================================================ -->
+  <!-- SUBCIRCUITO 1: Sumador completo de 1 bit con compuertas      -->
+  <!-- ============================================================ -->
+  <circuit name="Sumador_1bit">
+    <a name="circuit" val="Sumador_1bit"/>
+    <a name="circuitnamedbox" val="true"/>
+    <wire from="(30,40)" to="(30,100)"/>
+    <wire from="(30,100)" to="(110,100)"/>
+    <wire from="(80,40)" to="(80,60)"/>
+    <wire from="(80,60)" to="(110,60)"/>
+    <wire from="(130,40)" to="(130,80)"/>
+    <wire from="(130,80)" to="(110,80)"/>
+    <wire from="(200,60)" to="(230,60)"/>
+    <wire from="(200,100)" to="(270,100)"/>
+    <wire from="(270,100)" to="(270,140)"/>
+    <wire from="(270,140)" to="(110,140)"/>
+    <wire from="(200,140)" to="(230,140)"/>
+    <wire from="(230,60)" to="(230,120)"/>
+    <wire from="(230,120)" to="(300,120)"/>
+    <wire from="(230,140)" to="(300,140)"/>
+    <wire from="(370,130)" to="(400,130)"/>
+    <wire from="(290,80)" to="(320,80)"/>
+    <wire from="(320,80)" to="(320,110)"/>
+    <wire from="(320,110)" to="(350,110)"/>
+    <wire from="(290,130)" to="(310,130)"/>
+    <wire from="(310,130)" to="(310,140)"/>
+    <wire from="(310,140)" to="(350,140)"/>
+    <comp lib="1" loc="(160,80)" name="XOR Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(160,120)" name="XOR Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(290,80)" name="AND Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(290,130)" name="AND Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(380,130)" name="OR Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(30,40)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="0" loc="(80,40)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(130,40)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="Cin"/>
+    </comp>
+    <comp lib="0" loc="(220,60)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="S"/>
+    </comp>
+    <comp lib="0" loc="(420,130)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Cout"/>
+    </comp>
+  </circuit>
+
+  <!-- ============================================================ -->
+  <!-- SUBCIRCUITO 2: Sumador 4 bits Ripple Carry                   -->
+  <!-- ============================================================ -->
+  <circuit name="Sumador_4bit_RCA">
+    <a name="circuit" val="Sumador_4bit_RCA"/>
+    <a name="circuitnamedbox" val="true"/>
+    <comp lib="3" loc="(300,200)" name="Adder">
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(140,160)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="0" loc="(140,200)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(140,240)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="Cin"/>
+    </comp>
+    <comp lib="0" loc="(440,200)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="S"/>
+    </comp>
+    <comp lib="0" loc="(440,240)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Cout"/>
+    </comp>
+    <wire from="(140,160)" to="(280,160)"/>
+    <wire from="(280,160)" to="(280,190)"/>
+    <wire from="(140,200)" to="(280,200)"/>
+    <wire from="(140,200)" to="(280,210)"/>
+    <wire from="(140,240)" to="(280,240)"/>
+    <wire from="(280,240)" to="(280,230)"/>
+    <wire from="(320,200)" to="(440,200)"/>
+    <wire from="(320,210)" to="(380,210)"/>
+    <wire from="(380,210)" to="(380,240)"/>
+    <wire from="(380,240)" to="(440,240)"/>
+  </circuit>
+
+  <!-- ============================================================ -->
+  <!-- SUBCIRCUITO 3: Sumador/Restador 4 bits con detección overflow -->
+  <!-- ============================================================ -->
+  <circuit name="SumRes_4bit">
+    <a name="circuit" val="SumRes_4bit"/>
+    <a name="circuitnamedbox" val="true"/>
+    <comp lib="3" loc="(400,200)" name="Adder">
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="1" loc="(280,200)" name="XOR Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(140,160)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="0" loc="(140,200)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(140,260)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="Op"/>
+    </comp>
+    <comp lib="0" loc="(540,200)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="Result"/>
+    </comp>
+    <comp lib="0" loc="(540,240)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Cout"/>
+    </comp>
+    <wire from="(140,160)" to="(380,160)"/>
+    <wire from="(380,160)" to="(380,190)"/>
+    <wire from="(140,200)" to="(260,200)"/>
+    <wire from="(140,260)" to="(220,260)"/>
+    <wire from="(220,260)" to="(220,210)"/>
+    <wire from="(220,210)" to="(260,210)"/>
+    <wire from="(220,210)" to="(220,180)"/>
+    <wire from="(220,180)" to="(380,180)"/>
+    <wire from="(380,180)" to="(380,210)"/>
+    <wire from="(220,180)" to="(220,230)"/>
+    <wire from="(380,210)" to="(380,230)"/>
+    <wire from="(300,200)" to="(380,200)"/>
+    <wire from="(380,200)" to="(380,210)"/>
+    <wire from="(420,200)" to="(540,200)"/>
+    <wire from="(420,210)" to="(480,210)"/>
+    <wire from="(480,210)" to="(480,240)"/>
+    <wire from="(480,240)" to="(540,240)"/>
+  </circuit>
+
+  <!-- ============================================================ -->
+  <!-- SUBCIRCUITO 4: Registro 4 bits con habilitación              -->
+  <!-- ============================================================ -->
+  <circuit name="Registro_4bit_EN">
+    <a name="circuit" val="Registro_4bit_EN"/>
+    <a name="circuitnamedbox" val="true"/>
+    <comp lib="4" loc="(300,200)" name="Register">
+      <a name="width" val="4"/>
+      <a name="trigger" val="rising"/>
+      <a name="label" val="REG"/>
+    </comp>
+    <comp lib="0" loc="(140,180)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="label" val="D"/>
+    </comp>
+    <comp lib="0" loc="(140,220)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="0" loc="(140,260)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="EN"/>
+    </comp>
+    <comp lib="0" loc="(140,300)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="0" loc="(440,200)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="Q"/>
+    </comp>
+    <wire from="(140,180)" to="(280,180)"/>
+    <wire from="(280,180)" to="(280,190)"/>
+    <wire from="(140,220)" to="(290,220)"/>
+    <wire from="(290,220)" to="(290,220)"/>
+    <wire from="(140,260)" to="(310,260)"/>
+    <wire from="(310,260)" to="(310,220)"/>
+    <wire from="(140,300)" to="(280,300)"/>
+    <wire from="(280,300)" to="(280,220)"/>
+    <wire from="(320,200)" to="(440,200)"/>
+  </circuit>
+
+  <!-- ============================================================ -->
+  <!-- SUBCIRCUITO 5: FSM de control (Moore, 4 estados)             -->
+  <!-- ============================================================ -->
+  <circuit name="FSM_Control">
+    <a name="circuit" val="FSM_Control"/>
+    <a name="circuitnamedbox" val="true"/>
+    <comp lib="4" loc="(300,200)" name="Register">
+      <a name="width" val="2"/>
+      <a name="trigger" val="rising"/>
+      <a name="label" val="STATE"/>
+    </comp>
+    <comp lib="0" loc="(140,160)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="START"/>
+    </comp>
+    <comp lib="0" loc="(140,220)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="0" loc="(140,300)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="0" loc="(540,180)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="LD_A"/>
+    </comp>
+    <comp lib="0" loc="(540,220)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="LD_B"/>
+    </comp>
+    <comp lib="0" loc="(540,260)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="LD_ACC"/>
+    </comp>
+    <comp lib="0" loc="(540,300)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="EN_DISP"/>
+    </comp>
+    <comp lib="0" loc="(540,340)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="2"/>
+      <a name="label" val="STATE_OUT"/>
+    </comp>
+    <comp lib="0" loc="(420,200)" name="Tunnel">
+      <a name="label" val="STATE"/>
+    </comp>
+    <comp lib="0" loc="(140,180)" name="Tunnel">
+      <a name="facing" val="west"/>
+      <a name="label" val="STATE"/>
+    </comp>
+    <comp lib="2" loc="(450,180)" name="Decoder">
+      <a name="select" val="2"/>
+      <a name="enable" val="false"/>
+    </comp>
+  </circuit>
+
+  <!-- ============================================================ -->
+  <!-- SUBCIRCUITO 6: Decodificador BCD a 7 segmentos              -->
+  <!-- ============================================================ -->
+  <circuit name="BCD_7seg">
+    <a name="circuit" val="BCD_7seg"/>
+    <a name="circuitnamedbox" val="true"/>
+    <comp lib="0" loc="(140,200)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="label" val="BCD"/>
+    </comp>
+    <comp lib="5" loc="(280,220)" name="Hex Digit Display"/>
+    <wire from="(140,200)" to="(280,200)"/>
+    <wire from="(280,200)" to="(280,220)"/>
+  </circuit>
+
+  <!-- ============================================================ -->
+  <!-- TOP: Calculadora Acumuladora 4 bits                          -->
+  <!-- ============================================================ -->
+  <circuit name="Calculadora_Top">
+    <a name="circuit" val="Calculadora_Top"/>
+    <a name="circuitnamedbox" val="true"/>
+    
+    <!-- Entradas digitales -->
+    <comp lib="0" loc="(80,140)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="SW_A"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(80,200)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="SW_B"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(80,260)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="OP"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(80,300)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="START"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(80,340)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="CLK"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(80,380)" name="Pin">
+      <a name="facing" val="east"/>
+      <a name="output" val="false"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="RST"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+
+    <!-- Registros A y B -->
+    <comp lib="4" loc="(280,140)" name="Register">
+      <a name="width" val="4"/>
+      <a name="trigger" val="rising"/>
+      <a name="label" val="REG_A"/>
+    </comp>
+    <comp lib="4" loc="(280,200)" name="Register">
+      <a name="width" val="4"/>
+      <a name="trigger" val="rising"/>
+      <a name="label" val="REG_B"/>
+    </comp>
+
+    <!-- Sumador/Restador 4 bits -->
+    <comp lib="3" loc="(500,170)" name="Adder">
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="1" loc="(420,200)" name="XOR Gate">
+      <a name="facing" val="east"/>
+      <a name="inputs" val="2"/>
+      <a name="width" val="4"/>
+    </comp>
+
+    <!-- Acumulador -->
+    <comp lib="4" loc="(620,170)" name="Register">
+      <a name="width" val="4"/>
+      <a name="trigger" val="rising"/>
+      <a name="label" val="ACC"/>
+    </comp>
+
+    <!-- Display 7 segmentos -->
+    <comp lib="5" loc="(780,170)" name="Hex Digit Display">
+      <a name="label" val="DISPLAY"/>
+    </comp>
+
+    <!-- LEDs de salida individuales (representan el DAC R-2R en simulación) -->
+    <comp lib="5" loc="(780,260)" name="LED">
+      <a name="label" val="DAC_b3"/>
+    </comp>
+    <comp lib="5" loc="(810,260)" name="LED">
+      <a name="label" val="DAC_b2"/>
+    </comp>
+    <comp lib="5" loc="(840,260)" name="LED">
+      <a name="label" val="DAC_b1"/>
+    </comp>
+    <comp lib="5" loc="(870,260)" name="LED">
+      <a name="label" val="DAC_b0"/>
+    </comp>
+
+    <!-- LED de overflow -->
+    <comp lib="5" loc="(780,300)" name="LED">
+      <a name="label" val="OVF"/>
+    </comp>
+
+    <!-- Etiquetas/anotaciones -->
+    <comp loc="(80,80)" name="Text">
+      <a name="text" val="ENTRADAS"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp loc="(280,80)" name="Text">
+      <a name="text" val="REGISTROS DE OPERANDOS"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp loc="(500,80)" name="Text">
+      <a name="text" val="SUM/RES + ACUMULADOR"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp loc="(780,80)" name="Text">
+      <a name="text" val="SALIDAS"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+
+    <!-- Cableado principal -->
+    <wire from="(80,140)" to="(260,140)"/>
+    <wire from="(80,200)" to="(260,200)"/>
+    
+    <!-- Reloj y reset comunes -->
+    <wire from="(80,340)" to="(270,340)"/>
+    <wire from="(270,340)" to="(270,160)"/>
+    <wire from="(80,380)" to="(280,380)"/>
+    <wire from="(280,380)" to="(290,380)"/>
+
+    <!-- Salida REG_A → Sumador -->
+    <wire from="(300,140)" to="(480,140)"/>
+    <wire from="(480,140)" to="(480,160)"/>
+
+    <!-- Salida REG_B → XOR de inversión -->
+    <wire from="(300,200)" to="(400,200)"/>
+    
+    <!-- Op → XOR y Cin del sumador -->
+    <wire from="(80,260)" to="(400,260)"/>
+    <wire from="(400,260)" to="(400,210)"/>
+    <wire from="(400,260)" to="(480,260)"/>
+    <wire from="(480,260)" to="(480,200)"/>
+
+    <!-- XOR → Sumador -->
+    <wire from="(440,200)" to="(480,200)"/>
+    <wire from="(480,200)" to="(480,180)"/>
+
+    <!-- Sumador → Acumulador -->
+    <wire from="(520,170)" to="(600,170)"/>
+
+    <!-- Acumulador → Display y DAC -->
+    <wire from="(640,170)" to="(760,170)"/>
+    <wire from="(640,170)" to="(720,170)"/>
+    <wire from="(720,170)" to="(720,260)"/>
+  </circuit>
+</project>
